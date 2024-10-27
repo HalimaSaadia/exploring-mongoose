@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv").config();
 const app = express();
 const port = 3100;
 
@@ -9,7 +10,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-  mongoose.connect("mongodb+srv://tendertradinginc9:qR8z478vExp4xIVA@cluster0.nacqp5f.mongodb.net/baizid-builders?retryWrites=true&w=majority&appName=Cluster0").then(() => {
+  mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.nacqp5f.mongodb.net/baizid-builders?retryWrites=true&w=majority&appName=Cluster0`).then(() => {
     console.log("Database Connection successful");
   });
 
